@@ -3,14 +3,15 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 )
 
 func main() {
 
-	testString1 := "tactcoa"
+	testString1 := "abcdefghq"
 	// testString2 := "gfedca4"
-	fmt.Println(checkPermutationOfPalindrome(testString1))
+	fmt.Println(stringCompression(testString1))
 
 }
 
@@ -78,4 +79,28 @@ func checkPermutationOfPalindrome(s string) bool {
 		return true
 	}
 
+}
+
+func stringCompression(s string) string {
+	result := ""
+
+	charToInsert := s[0]
+	count := 1
+
+	for i := 1; i < len(s); i++ {
+		if s[i] == charToInsert {
+			count++
+		} else {
+			result = result + string(charToInsert) + strconv.Itoa(count)
+			charToInsert = s[i]
+			count = 1
+		}
+	}
+	result = result + string(charToInsert) + strconv.Itoa(count)
+
+	if len(result) > len(s) {
+		return s
+	}
+
+	return result
 }
