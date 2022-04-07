@@ -9,9 +9,7 @@ import (
 
 func main() {
 
-	testString1 := "abcdefghq"
-	// testString2 := "gfedca4"
-	fmt.Println(stringCompression(testString1))
+	fmt.Println(string(1))
 
 }
 
