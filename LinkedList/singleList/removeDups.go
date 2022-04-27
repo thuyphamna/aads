@@ -3,11 +3,11 @@ package singleList
 func (l *List) RemoveDups() {
 	tempMap := make(map[interface{}]bool)
 
-	if l.head == nil {
+	if l.Head == nil {
 		return
 	}
 
-	current := l.head
+	current := l.Head
 	var prev *Node
 	for current.next != nil {
 		_, exist := tempMap[current.value]

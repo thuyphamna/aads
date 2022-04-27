@@ -1,12 +1,12 @@
 package singleList
 
 func (l *List) ReturnKthToLast(k int) interface{} {
-	if l.head == nil {
+	if l.Head == nil {
 		return nil
 	}
 
-	p1 := l.head
-	p2 := l.head
+	p1 := l.Head
+	p2 := l.Head
 	for i := 1; i < k; i++ {
 		p1 = p1.next
 	}

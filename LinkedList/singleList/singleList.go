@@ -8,7 +8,7 @@ type Node struct {
 }
 
 type List struct {
-	head *Node
+	Head *Node
 	len  int
 }
 
@@ -20,10 +20,10 @@ func (l *List) InsertToEnd(val int) {
 	newNode := Node{}
 	newNode.value = val
 
-	if l.head == nil {
-		l.head = &newNode
+	if l.Head == nil {
+		l.Head = &newNode
 	} else {
-		current := l.head
+		current := l.Head
 		for current.next != nil {
 			current = current.next
 		}
@@ -34,26 +34,19 @@ func (l *List) InsertToEnd(val int) {
 func (l *List) InsertToHead(val int) {
 	newNode := Node{}
 	newNode.value = val
-	newNode.next = l.head
-	l.head = &newNode
+	newNode.next = l.Head
+	l.Head = &newNode
 	l.len++
 }
 func (l *List) GetLen() int {
 	return l.len
 }
 
-func (l *List) GetHead() (int, error) {
-	if l.head == nil {
-		return 0, fmt.Errorf("Single list is empty")
-	}
-	return l.head.value, nil
-}
-
 func (l *List) PrintList() error {
-	if l.head == nil {
+	if l.Head == nil {
 		return fmt.Errorf("Single list is empty")
 	}
-	current := l.head
+	current := l.Head
 	for current.next != nil {
 		fmt.Print("->", current.value)
 		current = current.next
@@ -67,17 +60,17 @@ func (l *List) InsertAt(pos int, val int) error {
 	newNode := Node{}
 	newNode.value = val
 
-	if l.head == nil && pos != 0 {
+	if l.Head == nil && pos != 0 {
 		return fmt.Errorf("Single list is empty")
 	}
 
 	if pos == 0 {
-		newNode.next = l.head
-		l.head = &newNode
+		newNode.next = l.Head
+		l.Head = &newNode
 		return nil
 	}
 
-	current := l.head
+	current := l.Head
 	for i := 0; i < l.len; i++ {
 		if i == pos {
 			newNode.next = current.next
@@ -90,10 +83,10 @@ func (l *List) InsertAt(pos int, val int) error {
 }
 
 func (l *List) SearchFor(val int) error {
-	if l.head == nil {
+	if l.Head == nil {
 		return fmt.Errorf("Single list is empty")
 	}
-	current := l.head
+	current := l.Head
 	for current.next != nil {
 		if current.value == val {
 			fmt.Printf("Found node %v in the list", val)
@@ -105,13 +98,13 @@ func (l *List) SearchFor(val int) error {
 }
 
 func (l *List) Delete(val int) error {
-	if l.head == nil {
+	if l.Head == nil {
 		return fmt.Errorf("Single list")
 	}
 
-	current := l.head
+	current := l.Head
 	if current.value == val {
-		l.head = current.next
+		l.Head = current.next
 		return nil
 	}
 	for current.next != nil {
@@ -130,7 +123,7 @@ func (l *List) Delete(val int) error {
 }
 
 func (l *List) DeleteAt(pos int) error {
-	if l.head == nil {
+	if l.Head == nil {
 		return fmt.Errorf("Single list is empty")
 	}
 
@@ -138,10 +131,10 @@ func (l *List) DeleteAt(pos int) error {
 		return fmt.Errorf("Can't find the position in the list")
 	}
 
-	current := l.head
+	current := l.Head
 	for i := 0; i < l.len; i++ {
 		if pos == 0 {
-			l.head = current.next
+			l.Head = current.next
 			return nil
 		}
 		if i+1 == pos {
