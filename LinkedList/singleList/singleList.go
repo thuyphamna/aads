@@ -3,7 +3,7 @@ package singleList
 import "fmt"
 
 type Node struct {
-	value interface{}
+	value int
 	next  *Node
 }
 
@@ -16,7 +16,7 @@ func CreateList() *List {
 	return &List{}
 }
 
-func (l *List) InsertToEnd(val interface{}) {
+func (l *List) InsertToEnd(val int) {
 	newNode := Node{}
 	newNode.value = val
 
@@ -31,7 +31,7 @@ func (l *List) InsertToEnd(val interface{}) {
 	}
 	l.len++
 }
-func (l *List) InsertToHead(val interface{}) {
+func (l *List) InsertToHead(val int) {
 	newNode := Node{}
 	newNode.value = val
 	newNode.next = l.head
@@ -42,9 +42,9 @@ func (l *List) GetLen() int {
 	return l.len
 }
 
-func (l *List) GetHead() (interface{}, error) {
+func (l *List) GetHead() (int, error) {
 	if l.head == nil {
-		return nil, fmt.Errorf("Single list is empty")
+		return 0, fmt.Errorf("Single list is empty")
 	}
 	return l.head.value, nil
 }
@@ -63,7 +63,7 @@ func (l *List) PrintList() error {
 	return nil
 }
 
-func (l *List) InsertAt(pos int, val interface{}) error {
+func (l *List) InsertAt(pos int, val int) error {
 	newNode := Node{}
 	newNode.value = val
 
@@ -89,7 +89,7 @@ func (l *List) InsertAt(pos int, val interface{}) error {
 	return fmt.Errorf("Postion is not valid for this list")
 }
 
-func (l *List) SearchFor(val interface{}) error {
+func (l *List) SearchFor(val int) error {
 	if l.head == nil {
 		return fmt.Errorf("Single list is empty")
 	}
@@ -104,7 +104,7 @@ func (l *List) SearchFor(val interface{}) error {
 	return fmt.Errorf("Can't find this value in the list")
 }
 
-func (l *List) Delete(val interface{}) error {
+func (l *List) Delete(val int) error {
 	if l.head == nil {
 		return fmt.Errorf("Single list")
 	}
