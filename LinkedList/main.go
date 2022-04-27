@@ -13,16 +13,11 @@ func main() {
 	l.InsertToEnd(3)
 	l.InsertToEnd(4)
 	l.InsertToEnd(5)
-	l.InsertToEnd(1)
-	l.InsertToEnd(1)
-	l.InsertToEnd(1)
-	l.InsertToEnd(2)
-	l.InsertToEnd(5)
 	l.InsertToEnd(9)
 	l.InsertToEnd(8)
 
-	fmt.Println(l.GetLen())
-	l.RemoveDups()
+	fmt.Println(l.ReturnKthToLast(8))
+	// l.RemoveDups()
 
 	l.PrintList()
 
