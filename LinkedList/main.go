@@ -1,23 +1,27 @@
 package main
 
 import (
-	"LinkedList/singleList"
+	"LinkedList/cache"
 	"fmt"
 )
 
 func main() {
-	l := singleList.CreateList()
-	// s := singleList.CreateList()
+	cache := cache.CreateCache(3)
 
-	l.InsertToEnd(8)
-	l.InsertToEnd(7)
-	l.InsertToEnd(2)
-	l.InsertToEnd(2)
-	l.InsertToEnd(7)
-	l.InsertToEnd(8)
+	cache.Put(1, 1)
+	cache.Put(2, 2)
+	cache.Put(3, 3)
+	value, error := cache.Get(3)
+	cache.Put(4, 4)
+	cache.Put(5, 5)
+	value, error = cache.Get(4)
+	cache.Put(6, 6)
 
-	// l.PrintList()
-	// singleList.CheckIfPalidrome(l.Head)
+	if error == nil {
+		fmt.Println(value)
+	} else {
+		fmt.Printf(error.Error())
+	}
+	cache.PrintCache()
 
-	fmt.Println(singleList.CheckIfPalidrome(l.Head))
 }
